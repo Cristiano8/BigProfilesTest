@@ -1,4 +1,4 @@
-package BigProfiles;
+package bigprofiles;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,21 +33,17 @@ public class Exercise1 {
 		 * tale di avere tante chiavi dello stesso valore quanto è grande la finestra richiesta.
 		 * */ 
 		List<Integer> listPair = numbers.collect();
-		List<Tuple2<Integer, Integer>> increment = new ArrayList<Tuple2<Integer, Integer>>();
-		int i = 1;
-		int j = 1;
-		for (Integer n : listPair) {
-			increment.add(new Tuple2<Integer, Integer>(i, n));
-			j ++;
-			if (j > percentage) {
-				j = 1;
-				i ++;
-			}
+		List<Tuple2<Integer, Integer>> increment = new ArrayList<Tuple2<Integer, Integer>>();		
+		int i = 0;
+		for (int n: listPair) {
+			int k = (int) (i/percentage);
+			increment.add(new Tuple2<Integer, Integer>(k+1, n));
+			i ++;
 		}
-
+		
 		//Una volta assegnate le chiavi giuste eseguo la somma per finestre
 		JavaRDD<Tuple2<Integer, Integer>> tupleFromList = ctx.parallelize(increment,1);
-		//tupleFromList.saveAsTextFile("/opt/spark/application/test_data/temp_ouput1");
+//		tupleFromList.saveAsTextFile("/opt/spark/application/test_data/temp_ouput1");
 		JavaPairRDD<Integer, Integer> pairFromTuple = JavaPairRDD.fromJavaRDD(tupleFromList); 
 		JavaPairRDD<Integer, Integer> pairSum = pairFromTuple.reduceByKey((a , b) -> (a + b));
 //		pairSum.saveAsTextFile("/opt/spark/application/test_data/temp_ouput1");

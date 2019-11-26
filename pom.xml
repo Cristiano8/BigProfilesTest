@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>BigProfiles</groupId>
-	<artifactId>WordCount</artifactId>
+	<artifactId>BigProfilesChallenge</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -27,11 +27,6 @@
 		<dependency><!-- Spark dependency -->
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-core_2.12</artifactId>
-			<version>2.4.4</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.spark</groupId>
-			<artifactId>spark-streaming_2.12</artifactId>
 			<version>2.4.4</version>
 		</dependency>
 		<dependency>

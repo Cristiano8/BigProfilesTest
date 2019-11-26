@@ -1,4 +1,4 @@
-package BigProfiles;
+package bigprofiles;
 
 import java.util.Arrays;
 import java.util.List;
@@ -74,11 +74,8 @@ public class Exercise2 {
 		//Calcola la distanza per ogni id
 		JavaPairRDD<String, Double> idDistance= idAverageRDD.mapToPair(
 				t -> new Tuple2<String, Double>(t._1, (Math.abs(average - t._2))));
-		
-		JavaPairRDD<String, Double> outputRDD = idDistance.mapToPair(
-				t -> new Tuple2<Double, String>(t._2, t._1)).sortByKey(false).mapToPair(
-				t -> new Tuple2<String, Double>(t._2, t._1));
-		
+				
+		JavaRDD<Tuple2<String, Double>> outputRDD = idDistance.map(t -> new Tuple2<String, Double>(t._1,t._2)).sortBy(tuple -> tuple._2, false, 1);
 		List<Tuple2<String, Double>> outputList = outputRDD.collect();
 //		for (Tuple2<String, Double> tuple: outputList) {
 //			System.out.println(tuple._1 + ": " + tuple._2);

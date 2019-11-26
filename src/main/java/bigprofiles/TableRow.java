@@ -1,4 +1,4 @@
-package BigProfiles;
+package bigprofiles;
 
 import java.io.Serializable;
 

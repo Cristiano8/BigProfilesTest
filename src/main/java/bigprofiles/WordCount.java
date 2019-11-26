@@ -1,4 +1,4 @@
-package BigProfiles;
+package bigprofiles;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +18,22 @@ public class WordCount {
 
 	public static void main(String[] args) {
 		// System.out.println("Hello World!");
+		
+//		int i = 1;
+//		int j = 1;
+//		for (Integer n : listPair) {
+//			increment.add(new Tuple2<Integer, Integer>(i, n));
+//			j ++;
+//			if (j > percentage) {
+//				j = 1;
+//				i ++;
+//			}
+//		}
+
+//		JavaPairRDD<String, Double> outputRDD = idDistance.mapToPair(
+//		t -> new Tuple2<Double, String>(t._2, t._1)).sortByKey(false).mapToPair(
+//		t -> new Tuple2<String, Double>(t._2, t._1));
+
 
 		SparkConf sparkConf = new SparkConf().setAppName("JavaWordCount");
 		JavaSparkContext ctx = new JavaSparkContext(sparkConf);
